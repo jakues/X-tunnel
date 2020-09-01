@@ -1,14 +1,15 @@
 #!/bin/bash
 #xderm (Ryan Fauzi)
+#modified jakues
 ####################################################################
 ##################### initializing script ##########################
 if [[ ! -e /usr/bin/assh/profile.txt ]]; then
 mkdir -p /usr/bin/assh/
-echo -e "mode '1'\npayload 'CONNECT / HTTP/1.1[crlf]Host: i.ytimg.com[crlf]Connection: Keep-Alive[crlf]Content-Length: False[crlf]Host: [host_port][crlf][crlf]'\nsni 'googlevideo.com'\nip '202.152.240.50:8080'\nproxy '202.152.240.50'\nport '8080'" > /usr/bin/assh/profile.txt
+echo -e "mode '1'\npayload '[raw][crlf]Host: scontent.instagram.com[crlf][crlf]'\nsni 'scontent.instagram.com'\nip '202.152.240.50:8080'\nproxy '202.152.240.50'\nport '8080'" > /usr/bin/assh/profile.txt
 fi
 if [[ ! -e /usr/bin/assh/akun.txt ]]; then
 mkdir -p /usr/bin/assh/
-echo -e "blacksheepID\nxxxx\n22\nvip.jagoanssh.com\n" > /usr/bin/assh/akun.txt
+echo -e "zeroWRT\nxxxx\n22\nrill.tundns.pw\n" > /usr/bin/assh/akun.txt
 fi
 ################################################################
 cdir="/usr/bin"
@@ -32,8 +33,6 @@ echo
 echo -e " \e[36;1mPastikan Persyaratan berikut terpenuhi:\e[0m"
 while true; do
 echo -e " \e[32;1m*******************************************************\e[0m"
-#echo -e " \e[36;1m1. Akan merubah port dropbear ke 443.\e[0m"
-#echo -e " \e[36;1m2. Akan merubah port openssh ke 22.\e[0m"
 echo -e " \e[36;1m3. Akan mengupdate, mengupgrade, dan menginstall dengan otomatis.\e[0m"
 echo -e " \e[36;1m4. Pastikan Router tersambung dengan internet yang lancar.\e[0m"
 echo -e " \e[36;1m5. Pastikan Router sudah EXROOT dan penyimpanan flasdisk diatas 1GB.\e[0m"
@@ -43,57 +42,25 @@ echo -e " \e[36;1m8. Router/Koneksi mati saat proses berlangsung BERPOTENSI meny
 echo -e " \e[36;1m8. Router akan reboot otomatis setelah update selesai.\e[0m"
 echo -e " \e[32;1m*******************************************************\e[0m"
 read -p " Are you sure you want to continue? <y/N> " prompt
-if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]; then
-#echo -e " \e[36;1mProses sedang berlangsung... 10%\e[0m"
-echo -e " \e[36;1mProses sedang berlangsung...\e[0m"
-opkg update && opkg install python-pip screen redsocks coreutils-timeout openssl-util curl ncat openssh-client
-#sleep 1
-#echo -e " \e[36;1mProses sedang berlangsung... 35%\e[0m"
-#sleep 1
-#echo -e " \e[36;1mProses sedang berlangsung... 60%\e[0m"
-#sleep 1
-#echo -e " \e[36;1mProses sedang berlangsung... 85%\e[0m"
-#wget --no-check-certificate 'https://raw.githubusercontent.com/tavinus/opkg-upgrade/master/opkg-upgrade.sh' -O "/tmp/opkg-upgrade.sh" && chmod 755 "/tmp/opkg-upgrade.sh" && /tmp/opkg-upgrade.sh -f
-cek=$(cat /etc/openwrt_r*)
-if [[ $cek == *"LEDE"* ]] && [[ $cek == *"ar71xx"* ]]; then
-wget --no-check-certificate -N https://github.com/tbscrew/Openwrt-Tunnel/raw/master/lede/ar71xx/sshpass_1.05-pulpstone_mips_24kc.ipk -P /tmp && cd /tmp && opkg install sshpass_1.05-pulpstone_mips_24kc.ipk
-elif [[ $cek == *"LEDE"* ]] && [[ $cek == *"brcm63xx"* ]]; then
-wget --no-check-certificate -N https://github.com/tbscrew/Openwrt-Tunnel/raw/master/lede/brcm63xx/sshpass_1.05-pulpstone_mips_mips32.ipk -P /tmp && cd /tmp && opkg install sshpass_1.05-pulpstone_mips_mips32.ipk
-elif [[ $cek == *"LEDE"* ]] && [[ $cek == *"ramips"* ]]; then
-wget --no-check-certificate -N https://github.com/tbscrew/Openwrt-Tunnel/raw/master/lede/ramips/sshpass_1.05-pulpstone_mipsel_24kc.ipk -P /tmp && cd /tmp && opkg install sshpass_1.05-pulpstone_mipsel_24kc.ipk
-elif [[ $cek == *"LEDE"* ]] && [[ $cek == *"sunxi"* ]]; then
-wget --no-check-certificate -N https://github.com/tbscrew/Openwrt-Tunnel/raw/master/lede/sunxi/sshpass_1.05-pulpstone_arm_cortex-a8_vfpv3.ipk -P /tmp && cd /tmp && opkg install sshpass_1.05-pulpstone_arm_cortex-a8_vfpv3.ipk
-elif [[ $cek == *"Chaos Calmer"* ]] && [[ $cek == *"ar71xx"* ]]; then
-wget --no-check-certificate -N https://github.com/tbscrew/Openwrt-Tunnel/raw/master/cc/ar71xx/sshpass_1.05-pulpstone_ar71xx.ipk -P /tmp && cd /tmp && opkg install sshpass_1.05-pulpstone_ar71xx.ipk
-elif [[ $cek == *"Chaos Calmer"* ]] && [[ $cek == *"brcm63xx"* ]]; then
-wget --no-check-certificate -N https://github.com/tbscrew/Openwrt-Tunnel/raw/master/cc/brcm63xx/sshpass_1.05-pulpstone_brcm63xx.ipk -P /tmp && cd /tmp && opkg install sshpass_1.05-pulpstone_brcm63xx.ipk
-elif [[ $cek == *"Chaos Calmer"* ]] && [[ $cek == *"ramips"* ]]; then
-wget --no-check-certificate -N https://github.com/tbscrew/Openwrt-Tunnel/raw/master/cc/ramips/sshpass_1.05-pulpstone_ramips_24kec.ipk -P /tmp && cd /tmp && opkg install sshpass_1.05-pulpstone_ramips_24kec.ipk
-elif [[ $cek == *"Chaos Calmer"* ]] && [[ $cek == *"sunxi"* ]]; then
-wget --no-check-certificate -N https://github.com/tbscrew/Openwrt-Tunnel/raw/master/cc/sunxi/sshpass_1.05-pulpstone_sunxi.ipk -P /tmp && cd /tmp && opkg install sshpass_1.05-pulpstone_sunxi.ipk
-else
-echo -e " \e[36;1mSSHPASS Version tidak terdeteksi. Silahkan contact ADMIN!\e[0m"
-fi
-cek=$(cat /etc/openwrt_r*)
-if [[ $cek == *"Chaos Calmer"* ]]; then
-opkg update && opkg install kmod-ipv6 ip6tables radvd ip 6to4
-fi
-echo -e " \e[36;1mProcess COMPLETE 100%\e[0m"
-sleep 2
-echo -e " \e[36;1mRouter Rebooting...\e[0m"
-reboot
-else
-echo -e " \e[31;3m############## UPDATE TELAH DIBATALKAN! ###############\e[0m"
-fi
-exit
-done
-fi
-if [[ -f $cekprofile ]]; then
-xderm profile
-fi
-if [[ -f $cekssh ]]; then
-xderm akunssh
-fi
+	if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]; then
+		echo -e " \e[36;1mProses sedang berlangsung...\e[0m"
+		opkg update && opkg install python-pip screen redsocks coreutils-timeout openssl-util curl ncat openssh-client sshpass httping
+
+		echo -e " \e[36;1mProcess COMPLETE 100%\e[0m"
+	else
+		echo -e " \e[31;3m############## UPDATE TELAH DIBATALKAN! ###############\e[0m"
+	fi
+		exit 1
+		done
+	fi
+
+		if [[ -f $cekprofile ]]; then
+			x profile
+		fi
+
+		if [[ -f $cekssh ]]; then
+		x akunssh
+		fi
 ################################################################
  start () {
 clear
@@ -1258,8 +1225,6 @@ echo
 echo -e " \e[36;1mPastikan Persyaratan berikut terpenuhi:\e[0m"
 while true; do
 echo -e " \e[32;1m*******************************************************\e[0m"
-#echo -e " \e[36;1m1. Akan merubah port dropbear ke 443.\e[0m"
-#echo -e " \e[36;1m2. Akan merubah port openssh ke 22.\e[0m"
 echo -e " \e[36;1m3. Akan mengupdate, mengupgrade, dan menginstall dengan otomatis.\e[0m"
 echo -e " \e[36;1m4. Pastikan Router tersambung dengan internet yang lancar.\e[0m"
 echo -e " \e[36;1m5. Pastikan Router sudah EXROOT dan penyimpanan flasdisk diatas 1GB.\e[0m"
@@ -1269,51 +1234,22 @@ echo -e " \e[36;1m8. Router/Koneksi mati saat proses berlangsung BERPOTENSI meny
 echo -e " \e[36;1m8. Router akan reboot otomatis setelah update selesai.\e[0m"
 echo -e " \e[32;1m*******************************************************\e[0m"
 read -p " Are you sure you want to continue? <y/N> " prompt
-if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]; then
-#echo -e " \e[36;1mProses sedang berlangsung... 10%\e[0m"
-echo -e " \e[36;1mProses sedang berlangsung...\e[0m"
-opkg update && opkg install python-pip screen redsocks coreutils-timeout openssl-util curl ncat openssh-client
-#sleep 1
-#echo -e " \e[36;1mProses sedang berlangsung... 35%\e[0m"
-#sleep 1
-#echo -e " \e[36;1mProses sedang berlangsung... 60%\e[0m"
-#sleep 1
-#echo -e " \e[36;1mProses sedang berlangsung... 85%\e[0m"
-#wget --no-check-certificate 'https://raw.githubusercontent.com/tavinus/opkg-upgrade/master/opkg-upgrade.sh' -O "/tmp/opkg-upgrade.sh" && chmod 755 "/tmp/opkg-upgrade.sh" && /tmp/opkg-upgrade.sh -f
-cek=$(cat /etc/openwrt_r*)
-if [[ $cek == *"LEDE"* ]] && [[ $cek == *"ar71xx"* ]]; then
-wget --no-check-certificate -N https://github.com/tbscrew/Openwrt-Tunnel/raw/master/lede/ar71xx/sshpass_1.05-pulpstone_mips_24kc.ipk -P /tmp && cd /tmp && opkg install sshpass_1.05-pulpstone_mips_24kc.ipk
-elif [[ $cek == *"LEDE"* ]] && [[ $cek == *"brcm63xx"* ]]; then
-wget --no-check-certificate -N https://github.com/tbscrew/Openwrt-Tunnel/raw/master/lede/brcm63xx/sshpass_1.05-pulpstone_mips_mips32.ipk -P /tmp && cd /tmp && opkg install sshpass_1.05-pulpstone_mips_mips32.ipk
-elif [[ $cek == *"LEDE"* ]] && [[ $cek == *"ramips"* ]]; then
-wget --no-check-certificate -N https://github.com/tbscrew/Openwrt-Tunnel/raw/master/lede/ramips/sshpass_1.05-pulpstone_mipsel_24kc.ipk -P /tmp && cd /tmp && opkg install sshpass_1.05-pulpstone_mipsel_24kc.ipk
-elif [[ $cek == *"LEDE"* ]] && [[ $cek == *"sunxi"* ]]; then
-wget --no-check-certificate -N https://github.com/tbscrew/Openwrt-Tunnel/raw/master/lede/sunxi/sshpass_1.05-pulpstone_arm_cortex-a8_vfpv3.ipk -P /tmp && cd /tmp && opkg install sshpass_1.05-pulpstone_arm_cortex-a8_vfpv3.ipk
-elif [[ $cek == *"Chaos Calmer"* ]] && [[ $cek == *"ar71xx"* ]]; then
-wget --no-check-certificate -N https://github.com/tbscrew/Openwrt-Tunnel/raw/master/cc/ar71xx/sshpass_1.05-pulpstone_ar71xx.ipk -P /tmp && cd /tmp && opkg install sshpass_1.05-pulpstone_ar71xx.ipk
-elif [[ $cek == *"Chaos Calmer"* ]] && [[ $cek == *"brcm63xx"* ]]; then
-wget --no-check-certificate -N https://github.com/tbscrew/Openwrt-Tunnel/raw/master/cc/brcm63xx/sshpass_1.05-pulpstone_brcm63xx.ipk -P /tmp && cd /tmp && opkg install sshpass_1.05-pulpstone_brcm63xx.ipk
-elif [[ $cek == *"Chaos Calmer"* ]] && [[ $cek == *"ramips"* ]]; then
-wget --no-check-certificate -N https://github.com/tbscrew/Openwrt-Tunnel/raw/master/cc/ramips/sshpass_1.05-pulpstone_ramips_24kec.ipk -P /tmp && cd /tmp && opkg install sshpass_1.05-pulpstone_ramips_24kec.ipk
-elif [[ $cek == *"Chaos Calmer"* ]] && [[ $cek == *"sunxi"* ]]; then
-wget --no-check-certificate -N https://github.com/tbscrew/Openwrt-Tunnel/raw/master/cc/sunxi/sshpass_1.05-pulpstone_sunxi.ipk -P /tmp && cd /tmp && opkg install sshpass_1.05-pulpstone_sunxi.ipk
-else
-echo -e " \e[36;1mSSHPASS Version tidak terdeteksi. Silahkan contact ADMIN!\e[0m"
-fi
-cek=$(cat /etc/openwrt_r*)
-if [[ $cek == *"Chaos Calmer"* ]]; then
-opkg update && opkg install kmod-ipv6 ip6tables radvd ip 6to4
-fi
-echo -e " \e[36;1mProcess COMPLETE 100%\e[0m"
-sleep 2
-echo -e " \e[36;1mRouter Rebooting...\e[0m"
-reboot
-else
-echo -e " \e[31;3m############## UPDATE TELAH DIBATALKAN! ###############\e[0m"
-fi
-exit
-done
+	if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]; then
+		echo -e " \e[36;1mProses sedang berlangsung...\e[0m"
+		opkg update && opkg install python-pip screen redsocks coreutils-timeout openssl-util curl ncat openssh-client sshpass httping
+		cek=$(uname -m)
+			if [[ $cek == *"aarch64"* ]]; then
+		                wget --no-check-certificate -N https://github.com/jakues/X-tunnel/raw/master/badvpn -P /usr/bin && chmod +x /usr/bin/badvpn
+		                wget --no-check-certificate -N https://github.com/jakues/X-tunnel/raw/master/corkscrew -P /usr/bin && chmod +x /usr/bin/corkscrew
+
+			fi
+	else
+		echo -e " \e[31;3m############## UPDATE TELAH DIBATALKAN! ###############\e[0m"
+	fi
+		exit 1
+		done
 }
+
  update () {
 clear
 echo -e " \e[32;1m#######################################################\e[0m"
@@ -1325,16 +1261,18 @@ echo -e " \e[32;1m*******************************************************\e[0m"
 echo -e " \e[36;1mProses update akan mereset profile dan akunssh anda.\e[0m"
 echo -e " \e[32;1m*******************************************************\e[0m"
 read -p " Are you sure you want to continue? <y/N> " prompt
-if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]; then
-gas=$(wget --no-check-certificate -N https://github.com/tbscrew/Openwrt-Tunnel/raw/master/xderm -P /usr/bin && chmod +x /usr/bin/xderm)
-echo -e "                       \e[36;1mDownload selesai...\e[0m"
-echo
-exit
-else
-echo -e " \e[31;3m############## UPDATE TELAH DIBATALKAN! ###############\e[0m"
-fi
-exit
-done
+	if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]; then
+		wget --no-check-certificate -N https://github.com/jakues/X-tunnel/raw/master/x -P /usr/bin && chmod +x /usr/bin/x
+		wget --no-check-certificate -N https://github.com/jakues/X-tunnel/raw/master/badvpn -P /usr/bin && chmod +x /usr/bin/badvpn
+		wget --no-check-certificate -N https://github.com/jakues/X-tunnel/raw/master/corkscrew -P /usr/bin && chmod +x /usr/bin/corkscrew
+		echo -e "                       \e[36;1mDownload selesai...\e[0m"
+		echo
+		exit
+	else
+		echo -e " \e[31;3m############## UPDATE TELAH DIBATALKAN! ###############\e[0m"
+	fi
+		exit
+		done
 }
  akunssh () {
 clear
@@ -1369,49 +1307,49 @@ read -p " ($time) " passs;[[ ! -z $passs ]] || { [[ -z $pass ]] || { passs=$pass
 time=$(date|awk -F ' ' '{print $4}');echo -e " \e[36;1m($time)\e[0m \e[32;1mSelesai.\n";rm -rf /usr/bin/assh/a*
 echo -e "$users\n$passs\n$prpos\n$prips" > /usr/bin/assh/akun.txt;exit
 }
-case $1 in
- "akunssh")
- akunssh
+case "$1" in
+ -akunssh|--akunssh|-a|--a)
+akunssh
 ;;
- "check")
- check
+ -check|--check|-c|--c)
+check
 ;;
- "profile")
- profile
+ -profile|--profile|-p|--p)
+profile
 ;;
- "rules")
- rules
+ -rules|--rules|-r|--r)
+rules
 ;;
- "setup")
- setup
+ -setup|--setup|-w|--w)
+setup
 ;;
- "start")
- start
+ -kickoff|--kickoff|-k|--k)
+start
 ;;
- "stop")
- stop
+ -stop|--stop|-s|--s)
+stop
 ;;
- "finder")
- finder
+ -finder|--finder|-f|--f)
+finder
 ;;
- "update")
- update
+ -update|-u|--u|--update)
+update
 ;;
 esac
 clear
 echo -e "\e[32;1m########################################################\e[0m"
-echo -e "\e[32;1m##\e[0m         \e[35;1mDaftar Perintah XDERM SSH Launcher         \e[0m\e[32;1m##\e[0m"
+echo -e "\e[32;1m##\e[0m         \e[35;1mDaftar Perintah XDERM SSH Launcher         \e[0m\>
 echo -e "\e[32;1m########################################################\e[0m"
-echo -e "\e[32;1m##\e[0m \e[36;3mxderm akunssh\e[0m \e[36;1m(Update Akun SSH)\e[0m                    \e[32;1m##\e[0m"
-echo -e "\e[32;1m##\e[0m \e[36;3mxderm check\e[0m   \e[36;1m(BUG Host Checker)\e[0m                   \e[32;1m##\e[0m"
-echo -e "\e[32;1m##\e[0m \e[36;3mxderm profile\e[0m \e[36;1m(Update Mode Inject, Payload & Bug)\e[0m  \e[32;1m##\e[0m"
-echo -e "\e[32;1m##\e[0m \e[36;3mxderm rules\e[0m   \e[36;1m(Add Rules IPtables)\e[0m                 \e[32;1m##\e[0m"
-echo -e "\e[32;1m##\e[0m \e[36;3mxderm setup\e[0m   \e[36;1m(Update Requirement)\e[0m                 \e[32;1m##\e[0m"
-echo -e "\e[32;1m##\e[0m \e[36;3mxderm start\e[0m   \e[36;1m(Mulai Menjalankan SSH)\e[0m              \e[32;1m##\e[0m"
-echo -e "\e[32;1m##\e[0m \e[36;3mxderm stop\e[0m    \e[36;1m(Hentikan Proses SSH)\e[0m                \e[32;1m##\e[0m"
-echo -e "\e[32;1m##\e[0m \e[36;3mxderm finder\e[0m  \e[36;1m(Cari IP > Mulai SSH)\e[0m                \e[32;1m##\e[0m"
-echo -e "\e[32;1m##\e[0m \e[36;3mxderm update\e[0m  \e[36;1m(Update XDERM versi terbaru)\e[0m         \e[32;1m##\e[0m"
+echo -e "\e[32;1m##\e[0m \e[36;3mx -akunssh  \e[0m  \e[36;1m(Update Akun SSH)\e[0m        >
+echo -e "\e[32;1m##\e[0m \e[36;3mx -check    \e[0m  \e[36;1m(BUG Host Checker)\e[0m       >
+echo -e "\e[32;1m##\e[0m \e[36;3mx -profile  \e[0m  \e[36;1m(Update Mode Inject, Payload &>
+echo -e "\e[32;1m##\e[0m \e[36;3mx -rules    \e[0m  \e[36;1m(Add Rules IPtables)\e[0m     >
+echo -e "\e[32;1m##\e[0m \e[36;3mx -setup    \e[0m  \e[36;1m(Update Requirement)\e[0m     >
+echo -e "\e[32;1m##\e[0m \e[36;3mx -start    \e[0m  \e[36;1m(Mulai Menjalankan SSH)\e[0m  >
+echo -e "\e[32;1m##\e[0m \e[36;3mx -stop     \e[0m  \e[36;1m(Hentikan Proses SSH)\e[0m    >
+echo -e "\e[32;1m##\e[0m \e[36;3mx -finder   \e[0m  \e[36;1m(Cari IP > Mulai SSH)\e[0m    >
+echo -e "\e[32;1m##\e[0m \e[36;3mx -update   \e[0m  \e[36;1m(Update XDERM versi terbaru)\e>
 echo -e "\e[32;1m########################################################\e[0m"
 echo -e "              \e[33;1mCurrent versi 3.2 Beta-Final\e[0m"
-echo -e "              \e[36;1mCopyright\e[0m\e[31;1m@\e[0m\e[34;1m FB\e[0m\e[31;1m:\e[0m\e[33;1mOpenwrt Tunnel\e[0m"
+echo -e "              \e[36;1mCopyright\e[0m\e[31;1m@\e[0m\e[34;1m FB\e[0m\e[31;1m:\e[0m\>
 echo
