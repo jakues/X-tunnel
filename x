@@ -1338,18 +1338,18 @@ update
 esac
 clear
 echo -e "\e[32;1m########################################################\e[0m"
-echo -e "\e[32;1m##\e[0m         \e[35;1mDaftar Perintah XDERM SSH Launcher         \e[0m\>
+echo -e "\e[32;1m##\e[0m         \e[35;1mDaftar Perintah XDERM SSH Launcher         \e[0m"
 echo -e "\e[32;1m########################################################\e[0m"
-echo -e "\e[32;1m##\e[0m \e[36;3mx -akunssh  \e[0m  \e[36;1m(Update Akun SSH)\e[0m        >
-echo -e "\e[32;1m##\e[0m \e[36;3mx -check    \e[0m  \e[36;1m(BUG Host Checker)\e[0m       >
-echo -e "\e[32;1m##\e[0m \e[36;3mx -profile  \e[0m  \e[36;1m(Update Mode Inject, Payload &>
-echo -e "\e[32;1m##\e[0m \e[36;3mx -rules    \e[0m  \e[36;1m(Add Rules IPtables)\e[0m     >
-echo -e "\e[32;1m##\e[0m \e[36;3mx -setup    \e[0m  \e[36;1m(Update Requirement)\e[0m     >
-echo -e "\e[32;1m##\e[0m \e[36;3mx -start    \e[0m  \e[36;1m(Mulai Menjalankan SSH)\e[0m  >
-echo -e "\e[32;1m##\e[0m \e[36;3mx -stop     \e[0m  \e[36;1m(Hentikan Proses SSH)\e[0m    >
-echo -e "\e[32;1m##\e[0m \e[36;3mx -finder   \e[0m  \e[36;1m(Cari IP > Mulai SSH)\e[0m    >
-echo -e "\e[32;1m##\e[0m \e[36;3mx -update   \e[0m  \e[36;1m(Update XDERM versi terbaru)\e>
+echo -e "\e[32;1m##\e[0m \e[36;3mx -akunssh  \e[0m  \e[36;1m(Update Akun SSH)\e[0m        "
+echo -e "\e[32;1m##\e[0m \e[36;3mx -check    \e[0m  \e[36;1m(BUG Host Checker)\e[0m       "
+echo -e "\e[32;1m##\e[0m \e[36;3mx -profile  \e[0m  \e[36;1m(Update Mode Inject, Payload"
+echo -e "\e[32;1m##\e[0m \e[36;3mx -rules    \e[0m  \e[36;1m(Add Rules IPtables)\e[0m     "
+echo -e "\e[32;1m##\e[0m \e[36;3mx -setup    \e[0m  \e[36;1m(Update Requirement)\e[0m     "
+echo -e "\e[32;1m##\e[0m \e[36;3mx -start    \e[0m  \e[36;1m(Mulai Menjalankan SSH)\e[0m  "
+echo -e "\e[32;1m##\e[0m \e[36;3mx -stop     \e[0m  \e[36;1m(Hentikan Proses SSH)\e[0m    "
+echo -e "\e[32;1m##\e[0m \e[36;3mx -finder   \e[0m  \e[36;1m(Cari IP > Mulai SSH)\e[0m    "
+echo -e "\e[32;1m##\e[0m \e[36;3mx -update   \e[0m  \e[36;1m(Update XDERM versi terbaru)\e[0m"
 echo -e "\e[32;1m########################################################\e[0m"
 echo -e "              \e[33;1mCurrent versi 3.2 Beta-Final\e[0m"
-echo -e "              \e[36;1mCopyright\e[0m\e[31;1m@\e[0m\e[34;1m FB\e[0m\e[31;1m:\e[0m\>
+echo -e "              \e[36;1mCopyright\e[0m\e[31;1m@\e[0m\e[34;1m FB\e[0m\e[31;1m:\e[0m"
 echo
