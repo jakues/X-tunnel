@@ -1,15 +1,19 @@
-# XDERM Openwrt-Tunnel
-SSH Tunneling on OPENWRT Router
+<h1 align="center">X-tunnel for Raspberry Pi gen 3</h1>
 
-Tested on https://pulpstone.pw LEDE and Chaos Chalmer.
+for ssh tunneling
 
-EXROOT mode is required.
-if you fresh on EXROOT mode.
-just type>
-1. opkg update && opkg install bash wget libustream-openssl
-2. wget --no-check-certificate https://github.com/tbscrew/Openwrt-Tunnel/raw/master/xderm /usr/bin && chmod +x /usr/bin/xderm
-3. type xderm or xderm setup and install all required package. router will rebooted after that.
-4. update your setting with xderm akunssh and xderm profile
-5. DONE.
+# [ Prerequisites ]
+
+The installation scripts require the following:
+
+* The Raspberry Pi 3 and 4 with operating system [openWRT](https://openwrt.org/toh/raspberry_pi_foundation/raspberry_pi)
+
+# [ Install ]
+
+  * First update repo and install tools
+    * `opkg update ; opkg install bash wget libustream-openssl`
+  * Then install it
+    * `wget --no-check-certificate https://raw.githubusercontent.com/jakues/X-tunnel/master/x -O /usr/bin/x ; chmod +x /usr/bin/x`
+  * Type `x setup`
 
 Copyright: https://www.facebook.com/groups/openwrtunnel/
